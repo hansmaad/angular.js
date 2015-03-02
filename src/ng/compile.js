@@ -1762,7 +1762,9 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
 
             ii = directives.length;
           } else {
-            $compileNode.html(directiveValue);
+            $template = removeComments(wrapTemplate(directive.templateNamespace, trim(directiveValue)));
+            $compileNode.empty();
+            $compileNode.append($template);
           }
         }
 
